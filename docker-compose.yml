@@ -1,0 +1,48 @@
+services:
+  samba:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ${CONTAINER_NAME:-samba}
+    restart: unless-stopped
+    network_mode: host
+    stdin_open: true
+    tty: true
+    environment:
+      - TZ=${TZ:-America/Montevideo}
+      - PROFILE=${PROFILE:-MODERN}
+      - WORKGROUP=${WORKGROUP:-WORKGROUP}
+      - INTERFACES=${INTERFACES:-lo eth0}
+      - SHARE_1=${SHARE_1:-}
+      - SHARE_2=${SHARE_2:-}
+      - SHARE_3=${SHARE_3:-}
+      - SHARE_4=${SHARE_4:-}
+      - SHARE_5=${SHARE_5:-}
+      - SHARE_6=${SHARE_6:-}
+      - SHARE_7=${SHARE_7:-}
+      - SHARE_8=${SHARE_8:-}
+      - VOL_1_DST=${VOL_1_DST:-/mnt/slot1}
+      - VOL_1_MODE=${VOL_1_MODE:-ro}
+      - VOL_2_DST=${VOL_2_DST:-/mnt/slot2}
+      - VOL_2_MODE=${VOL_2_MODE:-ro}
+      - VOL_3_DST=${VOL_3_DST:-/mnt/slot3}
+      - VOL_3_MODE=${VOL_3_MODE:-ro}
+      - VOL_4_DST=${VOL_4_DST:-/mnt/slot4}
+      - VOL_4_MODE=${VOL_4_MODE:-ro}
+      - VOL_5_DST=${VOL_5_DST:-/mnt/slot5}
+      - VOL_5_MODE=${VOL_5_MODE:-ro}
+      - VOL_6_DST=${VOL_6_DST:-/mnt/slot6}
+      - VOL_6_MODE=${VOL_6_MODE:-ro}
+      - VOL_7_DST=${VOL_7_DST:-/mnt/slot7}
+      - VOL_7_MODE=${VOL_7_MODE:-ro}
+      - VOL_8_DST=${VOL_8_DST:-/mnt/slot8}
+      - VOL_8_MODE=${VOL_8_MODE:-ro}
+    volumes:
+      - "${VOL_1_SRC:-/dev/null}:${VOL_1_DST:-/mnt/slot1}:${VOL_1_MODE:-ro}"
+      - "${VOL_2_SRC:-/dev/null}:${VOL_2_DST:-/mnt/slot2}:${VOL_2_MODE:-ro}"
+      - "${VOL_3_SRC:-/dev/null}:${VOL_3_DST:-/mnt/slot3}:${VOL_3_MODE:-ro}"
+      - "${VOL_4_SRC:-/dev/null}:${VOL_4_DST:-/mnt/slot4}:${VOL_4_MODE:-ro}"
+      - "${VOL_5_SRC:-/dev/null}:${VOL_5_DST:-/mnt/slot5}:${VOL_5_MODE:-ro}"
+      - "${VOL_6_SRC:-/dev/null}:${VOL_6_DST:-/mnt/slot6}:${VOL_6_MODE:-ro}"
+      - "${VOL_7_SRC:-/dev/null}:${VOL_7_DST:-/mnt/slot7}:${VOL_7_MODE:-ro}"
+      - "${VOL_8_SRC:-/dev/null}:${VOL_8_DST:-/mnt/slot8}:${VOL_8_MODE:-ro}"
